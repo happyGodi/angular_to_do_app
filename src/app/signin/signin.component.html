@@ -1,5 +1,7 @@
+<h4 class="form-title">Sign into your account</h4>
 <form [formGroup]="signInForm" (ngSubmit)="onSubmit(signInForm.value)" class="form-control">
   <input formControlName="username" class="form-control-input" type="text" name="username" id="username" placeholder="Type your username">
   <input formControlName="password" class="form-control-input" type="password" name="password" id="password" placeholder="type your password">
+  <span *ngIf="error !== ''" class="error">{{error}}</span>
   <button class="form-control-submit" type="submit">Sign In</button>
 </form>

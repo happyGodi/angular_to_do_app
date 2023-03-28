@@ -3,6 +3,7 @@ import { Validators } from '@angular/forms';
 import { User } from 'src/types/user-type';
 import { UserService } from '../user.service';
 import { FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -12,6 +13,7 @@ import { FormBuilder } from '@angular/forms';
 export class SignupComponent {
 
   users!: User[]
+  error = ''
 
   signUpForm = this.formBuiler.group({
     username: ['', Validators.required],
@@ -19,15 +21,29 @@ export class SignupComponent {
   })
 
   onSubmit(data: any){
-    this.userService.addUser(data)
+    if (data.username == '' || data.password == '') {
+      this.error = 'Cannot accept empty field!'
+      setTimeout(() => {
+        this.error = ''
+      }, 2000);
+    }
+    else {
+      if ( this.userService.addUser(data) && this.error === '' ) this.router.navigateByUrl('/home')
+      else {
+        this.error = 'Incorrect username or password!'
+        setTimeout(() => {
+          this.error = ''
+        }, 2000);
+      }
+    }
   }
 
   ngOnInit(): void {
     this.users = this.userService.getUsers()
-    console.log(this.users)
    }
 
   constructor(
+    private router: Router,
     private userService: UserService,
     private formBuiler: FormBuilder
   ){}
