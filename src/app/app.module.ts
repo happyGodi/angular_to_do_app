@@ -9,6 +9,7 @@ import { LandingComponent } from './landing/landing.component';
 import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
 import { HomeComponent } from './home/home.component';
+import { TaskComponent } from './task/task.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { HomeComponent } from './home/home.component';
     LandingComponent,
     SigninComponent,
     SignupComponent,
-    HomeComponent
+    HomeComponent,
+    TaskComponent
   ],
   imports: [
     BrowserModule,

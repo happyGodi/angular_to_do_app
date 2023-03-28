@@ -86,3 +86,11 @@
 ::-webkit-scrollbar{
   display: none;
 }
+.error{
+  width: 100%;
+  height: fit-content;
+  padding: 5px;
+  font-size: 14px;
+  text-align: center;
+  color: $error;
+}
