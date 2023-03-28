@@ -1,0 +1,18 @@
+<div *ngIf="tasks !== []">
+  <div *ngFor="let task of tasks; let i = index" class="task">
+    <div class="task-item">
+      <div class="task-content">
+        <h4 class="task-name">{{ task.name }}</h4>
+        <h6 class="task-date">{{ task.date | date : 'medium' }}</h6>
+        <form action="" class="task-form">
+          <input class="task-check" type="checkbox" name="done" id="done">
+          <label class="task-label" for="done">Done</label>
+        </form>
+      </div>
+      <div class="task-button">
+        <button (click)="delete(i)" class="task-delete" type="button">X</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="tasks === []" class="no-task"> no task!</div>
