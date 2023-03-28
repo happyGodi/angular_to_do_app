@@ -14,12 +14,18 @@ export class UserService {
      }
   ]
 
-  signIn(user: User){
-      this.users.find((u: User) => u.username === user.username && u.password === user.password) ? console.log('user found!') : console.log('Not found!')
+  signIn(user: User): Boolean{
+    if ( this.users.find((u: User) => u.username === user.username && u.password === user.password) )return true
+    else return false
+
   }
-  addUser(user: User){
-    this.users.push(user)
-    console.log(this.users)
+  addUser(user: User): Boolean{
+    try {
+      this.users.push(user)
+      return true
+    } catch (e) {
+      return false
+    }
     //this.http.post<User>('assets/users.json', user).subscribe(res => window.alert(res))
   }
   getUsers(){ return this.users}

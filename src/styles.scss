@@ -1,11 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+@import "./assets/scss/variables";
 
-.container{
-  width: 100vw;
-  height: 100vh;
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin:0;
   padding:0;
   box-sizing: border-box;
+}
+.container{
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 }
 button{
   width: fit-content;
@@ -43,4 +50,7 @@ input{
 ::placeholder{
   color: #6c6c6c;
   font-size: 12px;
+}
+.active-link{
+  border-bottom: 2px solid $sky;
 }

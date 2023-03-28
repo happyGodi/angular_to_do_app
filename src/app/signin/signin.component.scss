@@ -21,8 +21,23 @@
   width: 90%;
   height: fit-content;
   padding: 10px;
+  margin: 0%;
   background-color: $sky;
   color: white;
   outline: none;
+  border-radius: 5px;
 }
-
+.error{
+  width: 100%;
+  height: fit-content;
+  padding: 5px;
+  font-size: 14px;
+  text-align: center;
+  color: $error;
+}
+.form-title{
+  font-size: 16px;
+  font-weight: lighter;
+  color: $sky;
+  text-align: center;
+}
