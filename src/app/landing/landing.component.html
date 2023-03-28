@@ -8,9 +8,13 @@
     </div>
     <div class="content-form">
       <div class="content-form-navigation">
-        <button type="button" class="content-formenavigation-button">Sign In</button>
+        <button routerLink="/" type="button" class="content-formenavigation-button">Sign In</button>
         <span class="v-line">&nbsp;</span>
-        <button type="button" class="content-formenavigation-button">Sign Up</button>
+        <button routerLink="/sign-up" type="button" class="content-formenavigation-button">Sign Up</button>
+      </div>
+      <div class="content-form-control">
+        <router-outlet>
+        </router-outlet>
       </div>
     </div>
   </div>
