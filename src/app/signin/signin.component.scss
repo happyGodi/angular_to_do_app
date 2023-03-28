@@ -1,0 +1,28 @@
+@import "../../assets/scss/variables";
+
+.form-control{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  flex-direction: column;
+  width: fit-content;
+  height: fit-content;
+  padding: 32px 16px;
+}
+.form-control-input{
+  width: 90%;
+  height: 20px;
+  outline: none;
+  border-bottom: 2px solid $sky;
+
+}
+.form-control-submit{
+  width: 90%;
+  height: fit-content;
+  padding: 10px;
+  background-color: $sky;
+  color: white;
+  outline: none;
+}
+
