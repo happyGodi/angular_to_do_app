@@ -17,7 +17,7 @@ export class TaskComponent {
     console.log(this.tasks.subscribe(res => res))
   }
 
-  delete(id: number){
+  delete(id: string){
     this.taskService.deleteTask(id)
   }
 
