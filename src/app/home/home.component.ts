@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { TaskService } from '../task.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -28,11 +29,17 @@ export class HomeComponent {
     }
   }
 
+  disconnect(){
+    sessionStorage.removeItem('access_token')
+    this.router.navigate(['/'])
+  }
+
   reset(){ this.taskService.resetTask()}
 
   constructor(
     private formBuilder: FormBuilder,
-    private taskService: TaskService
+    private taskService: TaskService,
+    private router: Router,
   ){}
 
 }

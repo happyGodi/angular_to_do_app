@@ -1,36 +1,20 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from 'src/types/user-type';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  users: User[] = [
-    {
-      "username": "jack",
-      "email": "jack@gmail.com",
-      "password": "jack"
-     }
-  ]
+  private url: string = 'http://localhost:3030/'
 
-  signIn(user: User): Boolean{
-    if ( this.users.find((u: User) => u.username === user.username && u.password === user.password) )return true
-    else return false
+  signIn(user: User): Observable<any> { return this.http.post(this.url + 'users/login', user) }
 
-  }
-  addUser(user: User): Boolean{
-    try {
-      this.users.push(user)
-      return true
-    } catch (e) {
-      return false
-    }
-    //this.http.post<User>('assets/users.json', user).subscribe(res => window.alert(res))
-  }
-  getUsers(){ return this.users}
-  //getUsersJson(){ return this.http.get<User[]>('assets/users.json')}
+  signUp(user: User) { this.http.post(this.url + 'users/register', user) }
+
+  getUsers(){ return this.http.get<User[]>(this.url + 'users') }
 
   constructor(
     private http: HttpClient
