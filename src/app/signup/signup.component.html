@@ -1,6 +1,7 @@
 <h4 class="form-title">Create a new account</h4>
 <form [formGroup]="signUpForm" (ngSubmit)="onSubmit(signUpForm.value)" class="form-control">
   <input formControlName="username" class="form-control-input" type="text" name="username" id="username" placeholder="Type your username">
+  <input formControlName="email" class="form-control-input" type="email" name="email" id="email" placeholder="Type your email">
   <input formControlName="password" class="form-control-input" type="password" name="password" id="password" placeholder="type your password">
   <span *ngIf="error !== ''" class="error">{{error}}</span>
   <button class="form-control-submit" type="submit">Sign Up</button>

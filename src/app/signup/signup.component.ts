@@ -17,11 +17,12 @@ export class SignupComponent {
 
   signUpForm = this.formBuiler.group({
     username: ['', Validators.required],
+    email: ['', Validators.email],
     password: ['', Validators.required]
   })
 
   onSubmit(data: any){
-    if (data.username == '' || data.password == '') {
+    if (data.username == '' || data.password == '' || data.email == '') {
       this.error = 'Cannot accept empty field!'
       setTimeout(() => {
         this.error = ''

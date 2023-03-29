@@ -10,6 +10,7 @@ export class UserService {
   users: User[] = [
     {
       "username": "jack",
+      "email": "jack@gmail.com",
       "password": "jack"
      }
   ]
@@ -29,7 +30,7 @@ export class UserService {
     //this.http.post<User>('assets/users.json', user).subscribe(res => window.alert(res))
   }
   getUsers(){ return this.users}
-  getUsersJson(){ return this.http.get<User[]>('assets/users.json')}
+  //getUsersJson(){ return this.http.get<User[]>('assets/users.json')}
 
   constructor(
     private http: HttpClient
