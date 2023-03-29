@@ -4,6 +4,11 @@ import { User } from 'src/types/user-type';
 import { UserService } from '../user.service';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { HttpHeaders } from '@angular/common/http';
+
+interface Res {
+  token: string;
+}
 
 @Component({
   selector: 'app-signin',
@@ -12,7 +17,7 @@ import { Router } from '@angular/router';
 })
 export class SigninComponent {
 
-  users!: User[]
+  users!: Observable<User[]>
   error = ''
 
   signInForm = this.formBuiler.group({
@@ -21,20 +26,17 @@ export class SigninComponent {
   })
 
   onSubmit(data: any){
-    if (data.username == '' || data.password == '') {
-      this.error = 'Cannot accept empty field!'
+    try {
+      this.userService.signIn(data).subscribe((res: Res) => {
+        sessionStorage.setItem('access_token', res.token)
+        this.router.navigate(['/home'])
+      })
+    } catch (e: any) {
+      this.error = e.message
+      console.log(e)
       setTimeout(() => {
         this.error = ''
-      }, 2000);
-    }
-    else {
-      if ( this.userService.signIn(data) && this.error === '' ) this.router.navigateByUrl('/home')
-      else {
-        this.error = 'Incorrect username or password!'
-        setTimeout(() => {
-          this.error = ''
-        }, 2000);
-      }
+      }, 3000);
     }
   }
 

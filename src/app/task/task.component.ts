@@ -1,7 +1,7 @@
 import { Task } from './../../types/task-type';
 import { Component, OnInit } from '@angular/core';
 import { TaskService } from '../task.service';
-import { save, getData } from '../utils/utils';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-task',
@@ -10,17 +10,15 @@ import { save, getData } from '../utils/utils';
 })
 export class TaskComponent {
 
-  tasks!: Task[]
+  tasks!: Observable<Task[]>
 
-  ngOnInit(){
+  ngOnInit(): void{
     this.tasks = this.taskService.getTasks()
-    save(this.tasks)
-    console.log(this.tasks)
+    console.log(this.tasks.subscribe(res => res))
   }
 
   delete(id: number){
     this.taskService.deleteTask(id)
-    save(this.tasks)
   }
 
   constructor(

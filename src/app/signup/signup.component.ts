@@ -4,6 +4,7 @@ import { User } from 'src/types/user-type';
 import { UserService } from '../user.service';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-signup',
@@ -12,35 +13,31 @@ import { Router } from '@angular/router';
 })
 export class SignupComponent {
 
-  users!: User[]
+  users!: Observable<User[]>
   error = ''
 
   signUpForm = this.formBuiler.group({
+    name: ['', Validators.required],
     username: ['', Validators.required],
     email: ['', Validators.email],
     password: ['', Validators.required]
   })
 
   onSubmit(data: any){
-    if (data.username == '' || data.password == '' || data.email == '') {
-      this.error = 'Cannot accept empty field!'
+    try {
+      this.userService.signUp(data)
+      if (sessionStorage.getItem('access_token')) this.router.navigate(['/home'])
+    } catch (e: any) {
+      this.error = e
       setTimeout(() => {
         this.error = ''
-      }, 2000);
-    }
-    else {
-      if ( this.userService.addUser(data) && this.error === '' ) this.router.navigateByUrl('/home')
-      else {
-        this.error = 'Incorrect username or password!'
-        setTimeout(() => {
-          this.error = ''
-        }, 2000);
-      }
+      }, 3000);
     }
   }
 
   ngOnInit(): void {
     this.users = this.userService.getUsers()
+    console.log(this.users)
    }
 
   constructor(
