@@ -21,8 +21,9 @@ export class TaskService {
     return this.http.get<Task[]>(this.url + 'tasks', { headers })
   }
 
-  deleteTask(id: number){
-
+  deleteTask(id: string){
+    const headers = new HttpHeaders().set('Authorization', 'Bearer' + this.token);
+    this.http.delete(this.url + 'tasks/delete/' + id, { headers })
   }
 
   resetTask(){

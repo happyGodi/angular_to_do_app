@@ -6,6 +6,9 @@ import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
+interface Res {
+  token: string;
+}
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -25,8 +28,10 @@ export class SignupComponent {
 
   onSubmit(data: any){
     try {
-      this.userService.signUp(data)
-      if (sessionStorage.getItem('access_token')) this.router.navigate(['/home'])
+      this.userService.signUp(data).subscribe((res: Res) => {
+        sessionStorage.setItem('access_token', res.token)
+        this.router.navigate(['/home'])
+      })
     } catch (e: any) {
       this.error = e
       setTimeout(() => {

@@ -12,7 +12,7 @@ export class UserService {
 
   signIn(user: User): Observable<any> { return this.http.post(this.url + 'users/login', user) }
 
-  signUp(user: User) { this.http.post(this.url + 'users/register', user) }
+  signUp(user: User): Observable<any> { return this.http.post(this.url + 'users/register', user) }
 
   getUsers(){ return this.http.get<User[]>(this.url + 'users') }
 
