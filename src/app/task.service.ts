@@ -14,17 +14,25 @@ export class TaskService {
     return this.http.post(this.url + 'tasks', task, { headers }) as Observable<Task>
   }
 
-  getTasks(token: string): Observable<any> {
+  getTasks(token: string): Observable<Task[]> {
     const headers = new HttpHeaders().set('Authorization', 'Bearer' + token);
-    return this.http.get<Task[]>(this.url + 'tasks', { headers });
+    return this.http.get<Task[]>(this.url + 'tasks', { headers }) as Observable<Task[]>
   }
 
-  deleteTask(id: string, token: string): Observable<any> {
+  deleteTask(id: string, token: string): Observable<Task> {
     const headers = new HttpHeaders().set('Authorization', 'Bearer' + token);
-    return this.http.delete(this.url + 'tasks/delete/' + id, { headers });
+    return this.http.delete(this.url + 'tasks/delete/' + id, { headers }) as Observable<Task>
   }
 
-  resetTask() {}
+  update(id: string, data: object,  token: string): Observable<Task> {
+    const headers = new HttpHeaders().set('Authorization', 'Bearer' + token);
+    return this.http.put(this.url + 'tasks/update/' + id, data, { headers }) as Observable<Task>
+  }
+
+  resetTask(token: string): Observable<Task> {
+    const headers = new HttpHeaders().set('Authorization', 'Bearer' + token);
+    return this.http.delete(this.url + 'tasks/clear', { headers }) as Observable<Task>
+  }
 
   constructor(private http: HttpClient) {}
 }
