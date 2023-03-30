@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent {
   task!: Task;
+  clear!: boolean
   taskForm = this.formBuilder.group({
     taskName: ['', Validators.required],
     isDone: [false]
@@ -22,6 +23,7 @@ export class HomeComponent {
 
   ngOnInit(){
     this.token = sessionStorage.getItem('access_token') as string;
+    this.clear = false
   }
 
   onSubmit(data: any){
@@ -30,13 +32,12 @@ export class HomeComponent {
         this.task = res
       })
     }
-    /*
     else {
       this.error = 'Cannot accept empty field!'
       setTimeout(() => {
         this.error = ''
       }, 2000);
-    } */
+    }
   }
 
   disconnect(){
@@ -44,7 +45,6 @@ export class HomeComponent {
     this.router.navigate(['/'])
   }
 
-  reset(){ this.taskService.resetTask()}
 
   constructor(
     private formBuilder: FormBuilder,
