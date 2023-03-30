@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Task } from 'src/types/task-type';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { TaskService } from '../task.service';
 import { Router } from '@angular/router';
@@ -9,24 +10,33 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-
-  error = ''
-
+  task!: Task;
   taskForm = this.formBuilder.group({
-    name: ['', Validators.required]
+    taskName: ['', Validators.required],
+    isDone: [false]
   })
 
+  error = ''
+  token = ''
+
+
+  ngOnInit(){
+    this.token = sessionStorage.getItem('access_token') as string;
+  }
+
   onSubmit(data: any){
-    if (data.name !== '') {
-      data.date = Date.now()
-      this.taskService.addTask(data)
+    if (data.taskName !== '') {
+      this.taskService.addTask(data, this.token).subscribe((res: any) => {
+        this.task = res
+      })
     }
+    /*
     else {
       this.error = 'Cannot accept empty field!'
       setTimeout(() => {
         this.error = ''
       }, 2000);
-    }
+    } */
   }
 
   disconnect(){

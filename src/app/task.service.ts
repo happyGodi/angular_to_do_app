@@ -4,32 +4,27 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TaskService {
+  private url: string = 'http://localhost:3030/';
 
-  url: string = 'http://localhost:3030/'
-
-  private token = sessionStorage.getItem('access_token');
-
-  addTask(task: Task) {
-
+  addTask(task: object, token: string): Observable<Task> {
+    const headers = new HttpHeaders().set('Authorization', 'Bearer' + token);
+    return this.http.post(this.url + 'tasks', task, { headers }) as Observable<Task>
   }
 
-  getTasks(): Observable<any>{
-    const headers = new HttpHeaders().set('Authorization', 'Bearer' + this.token);
-    return this.http.get<Task[]>(this.url + 'tasks', { headers })
+  getTasks(token: string): Observable<any> {
+    const headers = new HttpHeaders().set('Authorization', 'Bearer' + token);
+    return this.http.get<Task[]>(this.url + 'tasks', { headers });
   }
 
-  deleteTask(id: string){
-    const headers = new HttpHeaders().set('Authorization', 'Bearer' + this.token);
-    this.http.delete(this.url + 'tasks/delete/' + id, { headers })
+  deleteTask(id: string, token: string): Observable<any> {
+    const headers = new HttpHeaders().set('Authorization', 'Bearer' + token);
+    return this.http.delete(this.url + 'tasks/delete/' + id, { headers });
   }
 
-  resetTask(){
-  }
+  resetTask() {}
 
-  constructor(
-    private http: HttpClient
-  ) { }
+  constructor(private http: HttpClient) {}
 }

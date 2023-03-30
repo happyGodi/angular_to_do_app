@@ -1,27 +1,36 @@
 import { Task } from './../../types/task-type';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 import { TaskService } from '../task.service';
 import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-task',
   templateUrl: './task.component.html',
-  styleUrls: ['./task.component.scss']
+  styleUrls: ['./task.component.scss'],
 })
 export class TaskComponent {
+  @Input() newTask!: Task;
+  tasks: Task[] = [];
+  token = '';
 
-  tasks!: Observable<Task[]>
-
-  ngOnInit(): void{
-    this.tasks = this.taskService.getTasks()
-    console.log(this.tasks.subscribe(res => res))
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['newTask'].currentValue) {
+      this.tasks.unshift(changes['newTask'].currentValue);
+    }
   }
 
-  delete(id: string){
-    this.taskService.deleteTask(id)
+  ngOnInit(): void {
+    this.token = sessionStorage.getItem('access_token') as string;
+    this.taskService.getTasks(this.token as string).subscribe((res: Task[]) => {
+      this.tasks = res.reverse();
+    });
   }
 
-  constructor(
-    private taskService: TaskService,
-  ){}
+  delete(id: string) {
+    this.taskService.deleteTask(id, this.token as string).subscribe(() => {
+      this.tasks = this.tasks.filter((task: Task) => task._id !== id);
+    });
+  }
+
+  constructor(private taskService: TaskService) {}
 }
