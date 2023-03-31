@@ -24,8 +24,9 @@ export class TaskService {
     return this.http.delete(this.url + 'tasks/delete/' + id, { headers }) as Observable<Task>
   }
 
-  update(id: string, data: object,  token: string): Observable<Task> {
+  update(id: string, value: boolean,  token: string): Observable<Task> {
     const headers = new HttpHeaders().set('Authorization', 'Bearer' + token);
+    const data = { isDone: value }
     return this.http.put(this.url + 'tasks/update/' + id, data, { headers }) as Observable<Task>
   }
 
