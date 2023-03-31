@@ -4,7 +4,7 @@
   <div *ngFor="let task of tasks" class="task">
     <div class="task-item">
       <div class="task-content">
-        <h4 class="task-name">{{ task.taskName }}</h4>
+        <h4 [class.checked]="task.isDone" class="task-name">{{ task.taskName }}</h4>
         <h6 class="task-date">{{ task.date | date : "medium" }}</h6>
         <form action="" class="task-form">
           <input [checked]="task.isDone" (change)="onStatusChange($event, task._id)" class="task-check" type="checkbox" name="done" id="done" />

@@ -1,7 +1,6 @@
 import { Task } from './../../types/task-type';
 import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 import { TaskService } from '../task.service';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-task',
@@ -11,8 +10,8 @@ import { Observable } from 'rxjs';
 export class TaskComponent {
   @Input() newTask!: Task;
   tasks: Task[] = [];
-  token = '';
-  currentTask!: number
+  private token = ''
+  private currentTask!: number
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['newTask'].currentValue) {
@@ -44,5 +43,7 @@ export class TaskComponent {
     this.tasks.splice(0, this.tasks.length)
   }) }
 
-  constructor(private taskService: TaskService) {}
+  constructor(
+    private taskService: TaskService,
+  ) {}
 }

@@ -1,91 +1,105 @@
-@import "../../assets/scss/variables";
+* {
+  margin: 0%;
+  color: #3e3e3e;
+}
 
-.task{
+.task {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   width: 90%;
+  height: -moz-fit-content;
   height: fit-content;
   margin: 0%;
   padding: 10px;
 }
-.task-item{
+
+.task-item {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: row;
   width: 100%;
+  height: -moz-fit-content;
   height: fit-content;
   padding: 10px;
   flex: 1 1 90%;
 }
-.task-content{
+
+.task-content {
   display: flex;
   flex-direction: column;
   justify-content: start;
   align-items: center;
   flex: 1 1 90%;
 }
-.task-button{
+
+.task-button {
   display: flex;
   justify-content: center;
   align-items: center;
   flex: 1 1 10%;
 }
-.task-name{
+
+.task-name {
   font-size: 16px;
   width: 100%;
+  height: -moz-fit-content;
   height: fit-content;
   padding: 5px;
-  color: $dark;
+  color: #3e3e3e;
 }
-.task-date{
+
+.task-date {
   font-size: 14px;
   width: 100%;
+  height: -moz-fit-content;
   height: fit-content;
   margin: 5px;
-  color: $grey;
+  color: #818181;
 }
-.task-form{
+
+.task-form {
   display: flex;
   justify-content: start;
   align-items: center;
   width: 100%;
+  height: -moz-fit-content;
   height: fit-content;
   padding: 5px;
 }
-.task-check{
+
+.task-check {
   outline: none;
 }
-.task-label{
+
+.task-label {
   font-size: 14px;
-  color: $grey;
+  color: #818181;
 }
-.task-delete{
+
+.task-delete {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 30px;
   height: 30px;
   margin-left: auto;
-  background-color: $error;
-  outline: 2px solid $error;
+  background-color: rgb(225, 16, 16);
+  outline: 2px solid rgb(225, 16, 16);
   color: White;
   border-radius: 5px;
 }
-.home-task-clear{
+
+.home-task-clear {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 400px;
   margin: 10px auto;
-  color: $sky;
+  color: rgb(24, 131, 219);
   background-color: white;
-  outline: 2px solid $sky;
+  outline: 2px solid rgb(24, 131, 219);
   border-radius: 5px;
-}
-.checked{
-  color: $grey-light;
-  text-decoration: line-through;
-}
+}/*# sourceMappingURL=task.component.css.map */

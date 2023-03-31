@@ -1,9 +1,8 @@
 @import "../../assets/scss/variables";
+@import "../../assets/scss/utils";
 
 .form-control{
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex(row, center, center);
   align-self: center;
   flex-direction: column;
   width: fit-content;
@@ -18,10 +17,10 @@
 
 }
 .form-control-submit{
-  width: 90%;
+  width: 100%;
   height: fit-content;
   padding: 10px;
-  margin: 0%;
+  margin: 20px 0%;
   background-color: $sky;
   color: white;
   outline: none;
@@ -40,4 +39,32 @@
   font-weight: lighter;
   color: $sky;
   text-align: center;
+}
+.form-control-password{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: fit-content;
+  padding: 5px 0px;
+}
+.form-control-input-password{
+  display: flex;
+  margin: 0px;
+  flex: 1 1 88%;
+  outline: none;
+  border-bottom: 2px solid $sky;
+}
+.form-control-password-view{
+  @include flex(center, center);
+  margin: 0px;
+  margin-left: 2%;
+  flex: 1 1 10%;
+  color: $sky;
+  font-size: 16px;
+  outline: none;
+  border-left: 2px solid $sky;
+}
+.form-control-password-view:hover{
+  box-shadow: none;
+  transform: none;
 }

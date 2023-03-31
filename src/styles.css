@@ -1,21 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
-@import "./assets/scss/variables";
-
-body{
+body {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin:0;
-  padding:0;
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
-.container{
+
+.container {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
 }
-button{
+
+button {
+  width: -moz-fit-content;
   width: fit-content;
+  height: -moz-fit-content;
   height: fit-content;
   padding: 5px 16px;
   padding: 10px;
@@ -27,31 +29,41 @@ button{
   transition: box-shadow 0.2s ease, transform 0.2s ease;
   cursor: pointer;
 }
-button:hover{
+
+button:hover {
   box-shadow: 0px 1px 7px #9a9a9a;
   transform: translateY(-3px);
 }
-*{
+
+* {
   font-size: 16px;
   font-family: Arial, Helvetica, sans-serif;
   color: #242424;
 }
-input{
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+input {
   background-color: transparent;
   border: none;
   outline: 2px solid #6c6c6c;
-  color:#6c6c6c;
+  color: #6c6c6c;
   padding: 10px 15px;
   margin: 10px;
 }
-::placeholder{
+
+::-moz-placeholder {
   color: #6c6c6c;
   font-size: 12px;
 }
-.active-link{
-  border-bottom: 2px solid $sky;
+
+::placeholder {
+  color: #6c6c6c;
+  font-size: 12px;
 }
-*{
-  margin: 0%;
-  color: $dark;
-}
+
+.active-link {
+  border-bottom: 2px solid rgb(24, 131, 219);
+}/*# sourceMappingURL=styles.css.map */
