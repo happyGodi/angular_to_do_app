@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { TaskService } from '../task.service';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +12,11 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent {
   task!: Task;
-  clear!: boolean
+  user!: {
+    name: string,
+    username: string,
+    email: string
+  }
   taskForm = this.formBuilder.group({
     taskName: ['', Validators.required],
     isDone: [false]
@@ -23,7 +28,7 @@ export class HomeComponent {
 
   ngOnInit(){
     this.token = sessionStorage.getItem('access_token') as string;
-    this.clear = false
+    this.user = JSON.parse(this.cookieService.get('user'))
   }
 
   onSubmit(data: any){
@@ -42,6 +47,7 @@ export class HomeComponent {
 
   disconnect(){
     sessionStorage.removeItem('access_token')
+    this.cookieService.delete('user')
     this.router.navigate(['/'])
   }
 
@@ -50,6 +56,7 @@ export class HomeComponent {
     private formBuilder: FormBuilder,
     private taskService: TaskService,
     private router: Router,
+    private cookieService: CookieService
   ){}
 
 }

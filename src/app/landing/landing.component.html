@@ -2,15 +2,16 @@
 <div class="landing">
   <div class="content">
     <div class="content-overview">
-      <img src="../../assets/images/to-do-list-svgrepo-com.svg" alt="todo_logo" class="logo">
+      <img src="../../assets/images/icons8_todo_list_1.svg" alt="todo_logo" class="logo">
       <h1 class="content-overview-title">To Do</h1>
       <p class="content-overview-desc">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate, ea.</p>
+      <a href="#link" class="content-link"><img class="collapse-icon" src="../../assets/images/icons8_collapse_arrow.svg" alt="vollapse_icon"></a>
     </div>
-    <div class="content-form">
+    <div id="link" class="content-form">
       <div class="content-form-navigation">
-        <button routerLink="/" routerLinkActive="active-link" type="button" class="content-formenavigation-button">Sign In</button>
+        <button routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" type="button" class="content-formenavigation-button">Sign In</button>
         <span class="v-line">&nbsp;</span>
-        <button routerLink="/sign-up" routerLinkActive="active-link" type="button" class="content-formenavigation-button">Sign Up</button>
+        <button routerLink="/sign-up" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" type="button" class="content-formenavigation-button">Sign Up</button>
       </div>
       <div class="content-form-control">
         <router-outlet>

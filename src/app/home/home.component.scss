@@ -1,19 +1,15 @@
 @import "../../assets/scss/variables";
+@import "../../assets/scss/utils";
 
 .home{
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex(row, center, center);
   width: 100%;
   height: 100%;
   padding: 16px;
 }
 .home-task{
-  display: flex;
-  justify-content: space-evenly;
-  flex-direction: column;
-  align-items: center;
+  @include flex(column, space-evenly, center);
   width: fit-content;
   height: fit-content;
   padding: 32px;
@@ -47,9 +43,7 @@
 }
 
 .home-form-submit{
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex(center, center);
   margin: 0px;
   flex: 1 1 10%;
   color: white;
@@ -70,9 +64,6 @@
   height: 300px;
   overflow: scroll;
 }
-::-webkit-scrollbar{
-  display: none;
-}
 .error{
   width: 100%;
   height: fit-content;
@@ -82,13 +73,11 @@
   color: $error;
 }
 .home-header{
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-  align-items: center;
+  @include flex(row, space-between, center);
   width: 100%;
   height: fit-content;
   padding: 10px auto;
+  margin: 20px auto;
   flex-wrap: wrap;
 }
 .home-user{
@@ -105,4 +94,52 @@
   color: $sky;
   flex: 1 1 50%;
   text-align: end;
+}
+/* Hide the scrollbar by default */
+::-webkit-scrollbar {
+  width: 0;
+}
+
+/* Show the scrollbar when the user is scrolling */
+::-webkit-scrollbar-thumb {
+  background-color: $sky;
+}
+
+/* Track the scroll events and show the scrollbar when the user scrolls */
+:host ::ng-deep .tasks {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scrollbar-width: none; /* remove the default scrollbar */
+  -webkit-overflow-scrolling: touch; /* enable smooth scrolling on iOS */
+}
+
+:host ::ng-deep .tasks::-webkit-scrollbar {
+  width: 0; /* hide the scrollbar by default */
+}
+
+:host ::ng-deep .tasks::-webkit-scrollbar-thumb {
+  background-color: $sky; /* set the color of the scrollbar thumb */
+  border-radius: 5px;
+}
+:host ::ng-deep .tasks::-webkit-scrollbar-track {
+  background-color: $grey-light; /* set the color of the scrollbar thumb */
+  border-radius: 5px;
+}
+
+:host ::ng-deep .tasks::-webkit-scrollbar-thumb:vertical {
+  min-height: 50px; /* set the minimum height of the scrollbar thumb */
+  border-radius: 5px;
+}
+:host ::ng-deep .tasks:hover::-webkit-scrollbar {
+  width: 7px; /* show the scrollbar on hover */
+}
+
+:host ::ng-deep .tasks:hover::-webkit-scrollbar-thumb {
+  background-color: $sky; /* set the color of the scrollbar thumb on hover */
+  border-radius: 5px;
+}
+
+:host ::ng-deep .tasks:hover::-webkit-scrollbar-track {
+  background-color: $grey-light; /* set the color of the scrollbar thumb */
+  border-radius: 5px;
 }

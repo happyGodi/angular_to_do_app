@@ -1,0 +1,182 @@
+@keyframes tilting {
+  0% {
+    transform: rotate(5deg);
+  }
+  50% {
+    transform: rotate(-10deg);
+  }
+  75% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(5deg);
+  }
+}
+@keyframes bounceUp {
+  0% {
+    transform: translateY(-5px);
+  }
+  50% {
+    transform: translateY(5px);
+  }
+  100% {
+    transform: translateY(-5px);
+  }
+}
+.landing {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: start;
+  flex-wrap: wrap;
+  width: 60%;
+  height: 80%;
+  box-shadow: 0px 0px 10px #818181;
+  overflow: hidden;
+}
+
+.content-overview {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1 1 50%;
+  height: 100%;
+  background-color: white;
+}
+
+.content-form {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex: 1 1 50%;
+  height: 100%;
+  flex-wrap: wrap;
+}
+
+.logo {
+  width: 100px;
+  height: auto;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  padding: 16px;
+}
+
+.content-overview-title {
+  font-size: 48px;
+  color: rgb(24, 131, 219);
+  cursor: pointer;
+}
+
+.content-overview-title:hover {
+  animation: tilting 0.2s linear 0s 2;
+}
+
+.content-overview-desc {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 70%;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 16px;
+  color: rgb(24, 131, 219);
+  font-size: 14px;
+}
+
+.content-form-navigation {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 10px;
+  margin: 12px;
+}
+
+.content-formenavigation-button {
+  outline: none;
+  color: rgb(24, 131, 219);
+}
+
+.content-formenavigation-button:hover {
+  outline: none;
+  box-shadow: none;
+}
+
+.v-line {
+  display: flex;
+  align-self: center;
+  margin: 5px;
+  width: 2px;
+  height: 120%;
+  background-color: rgb(24, 131, 219);
+}
+
+.content-form-control {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  flex: 1 1 80%;
+  height: 70%;
+}
+
+.content-link {
+  display: none;
+}
+
+@media screen and (max-width: 1024px) {
+  .content-link {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    animation: bounceUp 1s linear 0s infinite;
+    align-self: center;
+    width: 50px;
+    height: 50px;
+    margin: 10px 0px;
+    border-radius: 50px;
+    box-shadow: 0px 0px 10px #818181;
+    outline: 2px solid rgb(24, 131, 219);
+    cursor: pointer;
+  }
+  .content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    overflow: scroll;
+  }
+  .content-overview {
+    flex: 1 1 100%;
+    height: 100%;
+  }
+  .content-form {
+    flex: 1 1 100%;
+    height: 100%;
+  }
+  .collapse-icon {
+    transform: rotate(180deg);
+  }
+}/*# sourceMappingURL=landing.component.css.map */

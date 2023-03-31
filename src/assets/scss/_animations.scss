@@ -1,0 +1,19 @@
+@keyframes tilting{
+  0%{ transform: rotate(5deg); }
+  50%{ transform: rotate(-10deg); }
+  75%{ transform: rotate(-5deg); }
+  100%{ transform: rotate(5deg); }
+}
+@keyframes bounceUp {
+  0%{ transform: translateY(-5px); }
+  50%{ transform: translateY(5px);}
+  100%{ transform: translateY(-5px); }
+}
+
+@mixin animateBounceIn($duration: 1s, $timing-function: linear, $delay: 0s,  $iteration-count: unset){
+  animation: bounceUp $duration $timing-function $delay $iteration-count;
+}
+
+@mixin animateTilting($duration: 0.15s, $timing-function: ease, $delay: 0s,  $iteration-count: unset) {
+  animation: tilting $duration $timing-function $delay $iteration-count;
+}

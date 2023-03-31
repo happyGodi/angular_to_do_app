@@ -3,7 +3,12 @@
   <input formControlName="name" class="form-control-input" type="text" name="name" id="name" placeholder="Type your name">
   <input formControlName="username" class="form-control-input" type="text" name="username" id="username" placeholder="Type your username">
   <input formControlName="email" class="form-control-input" type="email" name="email" id="email" placeholder="Type your email">
-  <input formControlName="password" class="form-control-input" type="password" name="password" id="password" placeholder="type your password">
+  <div class="form-control-password">
+    <input formControlName="password" class="form-control-input-password" [type]="type" name="password" id="password" placeholder="type your password">
+    <button type="button" (click)="showPass()" class="form-control-password-view">
+      <img src="../../assets/images/icons8_eye_2.svg" alt="eyes_icon">
+    </button>
+  </div>
   <span *ngIf="error !== ''" class="error">{{error}}</span>
   <button class="form-control-submit" type="submit">Sign Up</button>
 </form>
