@@ -7,7 +7,7 @@
         <h4 class="task-name">{{ task.taskName }}</h4>
         <h6 class="task-date">{{ task.date | date : "medium" }}</h6>
         <form action="" class="task-form">
-          <input [checked]="status" (change)="onStatusChange($event, task._id)" class="task-check" type="checkbox" name="done" id="done" />
+          <input [checked]="task.isDone" (change)="onStatusChange($event, task._id)" class="task-check" type="checkbox" name="done" id="done" />
           <label class="task-label" for="done">Done</label>
         </form>
       </div>

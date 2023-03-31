@@ -12,7 +12,7 @@ export class TaskComponent {
   @Input() newTask!: Task;
   tasks: Task[] = [];
   token = '';
-  status!: boolean
+  currentTask!: number
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['newTask'].currentValue) {
@@ -21,8 +21,10 @@ export class TaskComponent {
   }
 
   onStatusChange(event: Event, id: string){
-    this.status = (event.target as HTMLInputElement).checked
-    console.log(this.status, id)
+    this.taskService.update(id, (event.target as HTMLInputElement).checked, this.token).subscribe(() => {
+      this.currentTask = this.tasks.findIndex(task => task._id === id)
+      this.tasks[this.currentTask].isDone = (event.target as HTMLInputElement).checked
+    })
   }
 
   ngOnInit(): void {
