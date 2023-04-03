@@ -4,6 +4,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { TaskService } from '../task.service';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-home',
@@ -48,6 +49,7 @@ export class HomeComponent {
   disconnect(){
     sessionStorage.removeItem('access_token')
     this.cookieService.delete('user')
+    //this.httpHeaders.delete('Authorization')
     this.router.navigate(['/'])
   }
 
@@ -56,7 +58,8 @@ export class HomeComponent {
     private formBuilder: FormBuilder,
     private taskService: TaskService,
     private router: Router,
-    private cookieService: CookieService
+    private cookieService: CookieService,
+    //private httpHeaders: HttpHeaders
   ){}
 
 }
