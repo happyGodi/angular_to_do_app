@@ -56,7 +56,7 @@ export class SigninComponent {
     private router: Router,
     private userService: UserService,
     private formBuiler: FormBuilder,
-    private cookieService: CookieService
+    private cookieService: CookieService,
   ){}
 
 }
