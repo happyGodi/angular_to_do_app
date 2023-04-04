@@ -10,8 +10,9 @@
   padding: 32px 16px;
 }
 .form-control-input{
-  width: 90%;
-  height: 20px;
+  width: 100%;
+  height: fit-content;
+  padding: 5px 0px;
   outline: none;
   border-bottom: 2px solid $sky;
 
@@ -41,8 +42,7 @@
   text-align: center;
 }
 .form-control-password{
-  display: flex;
-  flex-direction: row;
+  @include flex(row, start, center);
   width: 100%;
   height: fit-content;
   padding: 5px 0px;
@@ -50,6 +50,8 @@
 .form-control-input-password{
   display: flex;
   margin: 0px;
+  height: fit-content;
+  padding: 5px 0px;
   flex: 1 1 88%;
   outline: none;
   border-bottom: 2px solid $sky;
