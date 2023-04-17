@@ -17,11 +17,12 @@
       @include size(90%, 10%, 12px 2.5%, 0px);
       border-bottom: 2px solid white;
 
-        h2 {
+        .username {
           height: 100%;
           color: white;
           font-size: 32px;
           font-weight: lighter;
+          text-transform: capitalize;
         }
     }
 

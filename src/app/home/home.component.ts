@@ -46,18 +46,11 @@ export class HomeComponent {
     }
   }
 
-  disconnect(){
-    sessionStorage.removeItem('access_token')
-    this.cookieService.delete('user')
-    //this.httpHeaders.delete('Authorization')
-    this.router.navigate(['/'])
-  }
 
 
   constructor(
     private formBuilder: FormBuilder,
     private taskService: TaskService,
-    private router: Router,
     private cookieService: CookieService,
     //private httpHeaders: HttpHeaders
   ){}
