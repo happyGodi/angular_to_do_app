@@ -1,26 +1,20 @@
 @import "../../assets/scss/variables";
 @import "../../assets/scss/utils";
 
-/* .home{
+.home{
   @include flex(row, space-evenly, center);
   width: 100%;
   height: 100%;
-  flex-wrap: wrap;
-}
-.sidebar{
-  @include flex(row, center, center);
-  flex: 1 1 20%;
-  height: 100%;
-  margin: 0%;
 }
 .dashboard{
-  @include flex(column, center, center);
-  flex: 1 1 80%;
+  @include flex(column, start, start);
+  width: calc(100% - 250px);
   height: 100%;
-  margin: 0%;
-} */
+  margin-left: auto;
+  padding: 24px;
+}
 
-.home{
+/* .home{
   position: relative;
   @include flex(row, center, center);
   width: 100%;
@@ -113,7 +107,7 @@
   color: $sky;
   flex: 1 1 50%;
   text-align: end;
-}
+} */
 /* Hide the scrollbar by default */
 ::-webkit-scrollbar {
   width: 0;

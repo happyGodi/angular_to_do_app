@@ -1,12 +1,9 @@
-<!-- <div class="home">
-  <div class="sidebar">
-  </div>
-  <div class="dashboard">
-  </div>
-</div> -->
-
  <div class="home">
-  <div class="home-task">
+    <app-sidebar></app-sidebar>
+  <div class="dashboard">
+    <p>dashboard</p>
+  </div>
+  <!-- <div class="home-task">
     <div class="home-header">
       <h3 class="home-user">Welcome &nbsp;{{ user.username }}</h3>
       <h6 class="home-task-title">What do you wanna do?</h6>
@@ -26,10 +23,11 @@
     </form>
     <span *ngIf="error !== ''" class="error">{{ error }}</span>
     <div class="tasks">
+      <app-arraydash></app-arraydash>
       <app-task [newTask]="task"></app-task>
     </div>
     <button (click)="disconnect()" class="home-task-disconnect" type="button">
       Disconnect
     </button>
-  </div>
+  </div> -->
 </div>

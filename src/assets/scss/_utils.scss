@@ -4,3 +4,13 @@
   justify-content: $justify-content;
   align-items: $align-items;
 }
+@mixin size($width: auto, $height: auto, $padding: auto, $margin: 0px) {
+  width: $width;
+  height: $height;
+  padding: $padding;
+  margin: $margin;
+}
+@mixin border($width: 0px, $style: solid, $color: #3e3e3e, $radius: 0px) {
+  border: $width $style $color;
+  border-radius: $radius;
+}
