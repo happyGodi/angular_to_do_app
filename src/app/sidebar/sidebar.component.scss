@@ -1,0 +1,68 @@
+@import "../../assets/scss/utils";
+@import "../../assets/scss/variables";
+
+.sidebar {
+  @include flex(column, start, center);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 250px;
+  height: 100vh;
+  padding: 24px 0px;
+  background-color: $sky;
+  z-index: 1000;
+
+    .sidebar-title {
+      @include flex(row, space-evenly, center);
+      @include size(90%, 10%, 12px 2.5%, 0px);
+      border-bottom: 2px solid white;
+
+        h2 {
+          height: 100%;
+          color: white;
+          font-size: 32px;
+          font-weight: lighter;
+        }
+    }
+
+    .sidebar-menu {
+      @include flex(column, start, center);
+      @include size(100%, fit-content, 12px, 0px);
+
+        .sidebar-menu-button {
+          @include flex(row, center, center);
+          @include size(98%, fit-content, 2% 12px, 6px);
+          @include border(2px, solid, $sky-clear, 50px);
+          outline: none;
+          color: White;
+          background-color: $sky-clear;
+          cursor: pointer;
+        }
+    }
+}
+
+.sidebar-foot {
+  @include flex(column, center, center);
+  @include size(100%, 10%, 12px, 0px);
+  position: absolute;
+  bottom: 0;
+    .sidebar-foot-disconect {
+      @include flex(row, center, center);
+      @include size(98%, fit-content, 2%, auto);
+      @include border(2px, solid, white, 50px);
+      outline: none;
+      background-color: white;
+      transition: transform 0.2s linear, outline 0.2s linear ;
+      cursor: pointer;
+        .sidebar-foot-disconect-text {
+          @include flex(row, center, center);
+          @include size(80%, 100%, 0px, 0px);
+          color: $sky;
+        }
+    }
+
+    .sidebar-foot-disconect:hover {
+      transform: translateY(-7px);
+      outline: 1px solid $sky;
+    }
+}

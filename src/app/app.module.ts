@@ -25,6 +25,8 @@ import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { en_US } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
+import { ArraydashComponent } from './arraydash/arraydash.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 registerLocaleData(en);
 
@@ -36,6 +38,8 @@ registerLocaleData(en);
     SignupComponent,
     HomeComponent,
     TaskComponent,
+    ArraydashComponent,
+    SidebarComponent,
   ],
   imports: [
     BrowserModule,
