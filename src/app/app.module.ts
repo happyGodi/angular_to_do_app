@@ -27,6 +27,7 @@ import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { ArraydashComponent } from './arraydash/arraydash.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { TableComponent } from './table/table.component';
 
 registerLocaleData(en);
 
@@ -40,6 +41,7 @@ registerLocaleData(en);
     TaskComponent,
     ArraydashComponent,
     SidebarComponent,
+    TableComponent,
   ],
   imports: [
     BrowserModule,

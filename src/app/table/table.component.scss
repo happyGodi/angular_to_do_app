@@ -1,0 +1,53 @@
+@import "../../assets/scss/utils";
+@import "../../assets/scss/variables";
+
+table {
+  @include size(100%, 100%, 12px 24px, 0px);
+  position: relative;
+  border-collapse: collapse;
+    thead {
+      margin: 5px 0px;
+      tr {
+        @include flex(row, space-evenly, center);
+        background-color: $sky;
+        border-radius: 5px;
+        td {
+          width: auto;
+          padding: 12px;
+          color: White;
+        }
+      }
+    }
+
+    tbody {
+      margin: 5px 0px;
+      tr {
+        @include flex(row, space-evenly, center);
+        td {
+          @include flex(row, center, center);
+          width: auto;
+          padding: 12px;
+        }
+      }
+      tr::nth-child(even) {
+        background-color: $grey-light;
+      }
+    }
+
+}
+.task-form{
+  @include flex(row, center, center);
+  @include size(100%, fit-content, 5px, auto);
+}
+.task-check{
+  outline: none;
+}
+.task-delete{
+  @include flex(row, center, center);
+  @include size(30px, 30px, 0px, auto);
+  margin-left: auto;
+  background-color: $error;
+  outline: none;
+  border-radius: 5px;
+}
+
