@@ -17,11 +17,13 @@
     @include flex(row, center, center);
     list-style-type: none;
     color: white;
+    flex: 1 1 calc(90% / 3);
     height: 100%;
   }
   .array-header-element-status {
     @include flex(row, center, center);
     list-style-type: none;
+    flex: 1 1 10%;
     color: white;
     height: 100%;
   }
@@ -43,7 +45,7 @@
     .array-body-element {
       @include flex(row, center, center);
       list-style-type: none;
-      flex: 1 1 calc(90% / 4);
+      flex: 1 1 calc(90% / 3);
       color: $dark;
       height: 100%;
     }

@@ -8,8 +8,9 @@ import { TaskService } from '../task.service';
   styleUrls: ['./table.component.scss']
 })
 export class TableComponent {
-@Input() columnWidth!: Array<string>
-@Input() columnLabel!: Array<Object | any>
+  @Input() newTask!: Task;
+  @Input() columnWidth!: Array<string>
+  @Input() columnLabel!: Array<Object | any>
 
   constructor(
     private taskService: TaskService
@@ -26,11 +27,11 @@ export class TableComponent {
     });
   }
 
-  /* ngOnChanges(changes: SimpleChanges) {
+  ngOnChanges(changes: SimpleChanges) {
     if (changes['newTask'].currentValue) {
       this.tasks.unshift(changes['newTask'].currentValue);
     }
-  } */
+  }
 
   onStatusChange(event: Event, id: string){
     this.taskService.update(id, (event.target as HTMLInputElement).checked, this.token).subscribe(() => {

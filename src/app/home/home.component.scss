@@ -21,8 +21,46 @@
       font-family: Arial, Helvetica, sans-serif;
     }
 
+    .dashboard-action {
+      @include flex(row, space-between, center);
+      @include size(100%, 10%, 12px, 0px);
+
+      .input-form {
+        width: 300px;
+        height: fit-content;
+      }
+
+      .form-control{
+        @include flex(row, center, center);
+        @include size(100%, 100%, 0px, 0px);
+      }
+      .form-input{
+        @include size(85%, 100%, 12px, 0px);
+        border: none;
+        outline: 2px solid $sky;
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+      }
+
+      .form-submit{
+        @include flex(row,center, center);
+        @include size(15%, 100%, 12px, 0px);
+        color: white;
+        background-color: $sky;
+        outline: 1px solid $sky;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+        transition: background-color 0.2s ease;
+      }
+      .form-submit:hover{
+        transform: translateY(0px);
+        box-shadow: none;
+        background-color: $sky-dark;
+      }
+
+    }
     .dashboard-content {
-      @include size(100%, 80%, 0px, 0px);
+      @include size(100%, 70%, 0px, 0px);
       .tab{
         @include flex(column, center, center);
         width: 100%;
