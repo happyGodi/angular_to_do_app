@@ -1,5 +1,5 @@
 import { Task } from 'src/types/task-type';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck} from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { TaskService } from '../task.service';
 import { Router } from '@angular/router';
@@ -13,6 +13,7 @@ import { HttpHeaders } from '@angular/common/http';
 })
 export class HomeComponent {
   task!: Task;
+  taskCount: number = 0;
   user!: {
     name: string,
     username: string,
@@ -34,10 +35,19 @@ export class HomeComponent {
   error = ''
   token = ''
 
-
   ngOnInit(){
     this.token = sessionStorage.getItem('access_token') as string;
     this.user = JSON.parse(this.cookieService.get('user'))
+    this.taskService.getTasks(this.token as string).subscribe((res: Task[]) => {
+      this.taskCount = res.reverse().length;
+    });
+  }
+
+  ngDoCheck() {
+    if (this.taskCount !== 0)
+    this.taskService.getTasks(this.token as string).subscribe((res: Task[]) => {
+      this.taskCount = res.reverse().length;
+    });
   }
 
   onSubmit(data: any){
