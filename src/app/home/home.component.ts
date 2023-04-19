@@ -18,6 +18,14 @@ export class HomeComponent {
     username: string,
     email: string
   }
+
+  columnInfo: Array<Object> = [
+    { name: 'Task name', property: 'taskName'},
+    { name: 'Date', property: 'date'},
+    { name: 'Status', property: 'isDone'},
+    { name: 'Delete', property: 'delete'},
+  ]
+  columnWidth: Array<string> = ['calc(90% / 3)', 'calc(90% / 3)', '10%', 'calc(90% / 3)']
   taskForm = this.formBuilder.group({
     taskName: ['', Validators.required],
     isDone: [false]

@@ -1,4 +1,4 @@
-import { Component, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, SimpleChanges } from '@angular/core';
 import { Task } from 'src/types/task-type';
 import { TaskService } from '../task.service';
 
@@ -8,12 +8,14 @@ import { TaskService } from '../task.service';
   styleUrls: ['./table.component.scss']
 })
 export class TableComponent {
+@Input() columnWidth!: Array<string>
+@Input() columnLabel!: Array<Object | any>
 
   constructor(
     private taskService: TaskService
   ) {}
 
-  tasks: Task[] = []
+  tasks: Task[] | any = []
   token!: string
   private currentTask!: number
 
@@ -24,15 +26,15 @@ export class TableComponent {
     });
   }
 
-  ngOnChanges(changes: SimpleChanges) {
+  /* ngOnChanges(changes: SimpleChanges) {
     if (changes['newTask'].currentValue) {
       this.tasks.unshift(changes['newTask'].currentValue);
     }
-  }
+  } */
 
   onStatusChange(event: Event, id: string){
     this.taskService.update(id, (event.target as HTMLInputElement).checked, this.token).subscribe(() => {
-      this.currentTask = this.tasks.findIndex(task => task._id === id)
+      this.currentTask = this.tasks.findIndex((task : any) => task._id === id)
       this.tasks[this.currentTask].isDone = (event.target as HTMLInputElement).checked
     })
   }
