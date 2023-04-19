@@ -1,40 +1,69 @@
 @import "../../assets/scss/utils";
 @import "../../assets/scss/variables";
 
-table {
-  @include size(100%, 100%, 12px 24px, 0px);
-  position: relative;
-  border-collapse: collapse;
-    thead {
-      margin: 5px 0px;
-      tr {
-        @include flex(row, space-evenly, center);
-        background-color: $sky;
-        border-radius: 5px;
-        td {
-          width: auto;
-          padding: 12px;
-          color: White;
-        }
-      }
-    }
+.array {
+  @include flex(column, start, center);
+  @include size(98%, 98%, 0px, 2%);
+}
 
-    tbody {
-      margin: 5px 0px;
-      tr {
-        @include flex(row, space-evenly, center);
-        td {
-          @include flex(row, center, center);
-          width: auto;
-          padding: 12px;
-        }
-      }
-      tr::nth-child(even) {
-        background-color: $grey-light;
-      }
-    }
+.array-header {
+  @include flex(row, center, start);
+  @include size(100%, 10%, 0px, 0px);
+  flex-wrap: nowrap;
+  background-color: $sky;
+  border-radius: 5px;
+
+  .array-header-element {
+    @include flex(row, center, center);
+    list-style-type: none;
+    color: white;
+    height: 100%;
+  }
+  .array-header-element-status {
+    @include flex(row, center, center);
+    list-style-type: none;
+    color: white;
+    height: 100%;
+  }
+
 
 }
+
+.array-list {
+  @include flex(column, start, center);
+  @include size(100%, 90%, 0px, 5px 0px);
+  overflow-y: scroll;
+
+  .array-body {
+    @include flex(row, center, start);
+    @include size(100%, fit-content, 12px 0px, 5px 0px);
+    flex-wrap: nowrap;
+    border-radius: 5px;
+
+    .array-body-element {
+      @include flex(row, center, center);
+      list-style-type: none;
+      flex: 1 1 calc(90% / 4);
+      color: $dark;
+      height: 100%;
+    }
+    .array-body-element-status {
+      @include flex(row, center, center);
+      list-style-type: none;
+      flex: 1 1 10%;
+      color: $dark;
+      height: 100%;
+    }
+  }
+  .array-body:nth-child(even) {
+    background-color: $grey-clear;
+  }
+}
+.checked{
+  color: $grey-light;
+  text-decoration: line-through;
+}
+
 .task-form{
   @include flex(row, center, center);
   @include size(100%, fit-content, 5px, auto);
@@ -51,3 +80,23 @@ table {
   border-radius: 5px;
 }
 
+
+::-webkit-scrollbar {
+  display: contents;
+  width: 8px;
+  position: absolute;
+  right: 0%;
+  z-index: 100;
+  margin: 2px;
+}
+::-webkit-scrollbar:horizontal {
+  display: none;
+}
+::-webkit-scrollbar-thumb {
+  background-color: $dark;
+  border-radius: 8px;
+}
+::-webkit-scrollbar-track {
+  background-color: $grey-light;
+  border-radius: 8px;
+}
